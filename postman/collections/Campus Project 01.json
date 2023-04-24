@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "ac656392-faef-4f4e-83b8-e2d5377eb080",
+		"name": "Campus Project 01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "23502169-ac656392-faef-4f4e-83b8-e2d5377eb080"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"id": "f1065792-e042-4cc2-b181-0b5fc64be8b5"
+					}
+				}
+			],
+			"id": "8bf8f311-7b90-4d8e-8d22-70af445a643e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"username\": \"richfield.edu\",\"password\": \"Richfield2020!\",\"rememberMe\": true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOGIN}}",
+					"host": [
+						"{{LOGIN}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Position Categories Menu",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"id": "ed3373fe-97e6-4aa9-a501-0c528663a0b4"
+					}
+				}
+			],
+			"id": "cff67c69-2fb0-43c4-b9aa-6ce32e6d7be9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{POSITIONMENU}}",
+					"host": [
+						"{{POSITIONMENU}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Position Categories Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var id = pm.response.json().id;\r",
+							"console.log(id);\r",
+							"pm.collectionVariables.set(\"id\", id);\r",
+							"\r",
+							"var name = pm.response.json().name;\r",
+							"console.log(name);\r",
+							"pm.collectionVariables.set(\"name\", name);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"id": "98312d6b-f686-4976-94f4-29386b0957e5"
+					}
+				}
+			],
+			"id": "617dabdd-cd71-44d3-bcd0-bbdb38d8f257",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": null, \"name\": \"{{$randomFullName}}\", \"translateName\": []}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{POSITION}}",
+					"host": [
+						"{{POSITION}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Position Categories Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"id": "d1e05c50-58a5-4205-9af0-8ce9a6e0dcc7"
+					}
+				}
+			],
+			"id": "b9c61e24-4044-4e7b-9a50-2efb599f34c1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"{{id}}\", \"name\": \"{{$randomFullName}}\", \"translateName\": []}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{POSITION}}",
+					"host": [
+						"{{POSITION}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Position Categories Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"id": "61a3a903-f905-460c-8ee9-7b9845403cff"
+					}
+				}
+			],
+			"id": "703dca8d-5b8d-46f7-8038-dc479b858f35",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{POSITION}}/{{id}}",
+					"host": [
+						"{{POSITION}}"
+					],
+					"path": [
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "72099679-8fdd-4e4d-9c55-95fbc9a61144",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "eb40bdf8-ea0a-41e2-9de4-6db4460cb0b5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "4a106f1c-479e-44a9-ae34-f677cc89b9f3",
+			"key": "id",
+			"value": ""
+		},
+		{
+			"id": "db455774-80b8-4ae4-ba32-baf74dd222c3",
+			"key": "name",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "97b16b1c-b12b-4ccb-8cb2-a7f9889dab17",
+		"name": "Campus Project 02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "23502169-97b16b1c-b12b-4ccb-8cb2-a7f9889dab17"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"id": "85016d5d-1af3-450c-9d00-bcb268ef6a89"
+					}
+				}
+			],
+			"id": "f8ba422c-7f96-4715-9025-cff3076f1520",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"username\": \"richfield.edu\",\"password\": \"Richfield2020!\",\"rememberMe\": true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOGIN}}",
+					"host": [
+						"{{LOGIN}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attestations Menu",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"id": "e0f1ee5f-aa4e-4878-9f26-4832e11963ee"
+					}
+				}
+			],
+			"id": "821742ea-1186-4edf-89bb-b208575c3e25",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ATTESTATIONSMENU}}",
+					"host": [
+						"{{ATTESTATIONSMENU}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attestations Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var id = pm.response.json().id;\r",
+							"console.log(id);\r",
+							"pm.collectionVariables.set(\"id\", id);\r",
+							"\r",
+							"var name = pm.response.json().name;\r",
+							"console.log(name);\r",
+							"pm.collectionVariables.set(\"name\", name);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"id": "488c530c-a3d6-4b28-9cfb-ce4c2d6e78e9"
+					}
+				}
+			],
+			"id": "da98f60b-27e9-4fca-b8fc-da4ad0710a86",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": null,\"name\": \"{{$randomFullName}}\",\"translateName\": []}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ATTESTATIONS}}",
+					"host": [
+						"{{ATTESTATIONS}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attestations Edit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"id": "824003b2-ccca-4a1d-a57c-d1af2f8406bc"
+					}
+				}
+			],
+			"id": "c5c6ab8b-f939-42ce-b53b-1cb5eb1cce59",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"{{id}}\", \"name\": \"{{$randomFullName}}\", \"translateName\": []}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ATTESTATIONS}}",
+					"host": [
+						"{{ATTESTATIONS}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Attestations Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"id": "465f7335-a4ac-47d7-b0e9-51c02ef49475"
+					}
+				}
+			],
+			"id": "8e689aae-ab26-49c4-a35f-4df98d77e29d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ATTESTATIONS}}/{{id}}",
+					"host": [
+						"{{ATTESTATIONS}}"
+					],
+					"path": [
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b170e4d0-e44b-4538-92a3-2a2b4caaf734",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2dab8497-aab5-47a4-9c31-e1c80faef2e5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "731c4a6f-08e2-465b-aa8d-a409b3059586",
+			"key": "id",
+			"value": ""
+		},
+		{
+			"id": "c7ab0b57-9b6f-49fa-a1ab-676ccd99af26",
+			"key": "name",
+			"value": ""
+		}
+	]
+}
